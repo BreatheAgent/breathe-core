@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  breathe-core:
+    build: .
+    container_name: breathe-core
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data:/app/data
+    command: ["--mode", "treasury"]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
